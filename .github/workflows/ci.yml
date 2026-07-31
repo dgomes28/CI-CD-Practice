@@ -16,7 +16,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build 
-        run: javac src/main/java/App.java
+        run: javac -d out src/main/java/App.java
       
       - name: Run
         run: java -cp out App
