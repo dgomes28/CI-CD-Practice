@@ -15,11 +15,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build with Maven
-        run: mvn compile
+      - name: Build 
+        run: javac src/main/java/App.java
       
       - name: Run
-        run: mvn exec:java -Dexec.mainClass="App"
+        run: java -cp out App
     
 
 
