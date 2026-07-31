@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Hello World
         run: echo "Hello CI/CD"
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Java
         uses: actions/setup-java@v5 
@@ -21,7 +23,7 @@ jobs:
              ls ..
              ls ../..
              ls ../../..
-             javac -d out ../src/main/java/App.java
+             javac -d out src/main/java/App.java
       
       - name: Run
         run: java -cp out App
