@@ -18,7 +18,9 @@ jobs:
       - name: Build 
         run: |
              pwd
-             ls -R
+             ls ..
+             ls ../..
+             ls ../../..
              javac -d out ../src/main/java/App.java
       
       - name: Run
