@@ -14,9 +14,11 @@ jobs:
         uses: actions/setup-java@v5 
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'temurin'    
       - name: Build 
-        run: javac -d out src/main/java/App.java
+        run: |
+             pwd
+             javac -d out src/main/java/App.java
       
       - name: Run
         run: java -cp out App
