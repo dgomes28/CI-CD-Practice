@@ -1,14 +1,15 @@
-- name: First Pipeline
+name: First Pipeline
 
-  on push:
-    branches:
-        - main
-    
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  build:
     runs-on: ubuntu-latest
-
     steps:
         - name: Hello World
           run: echo "Hello CI/CD"
 
 
-          
+
