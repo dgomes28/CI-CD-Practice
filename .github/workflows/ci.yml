@@ -1,5 +1,4 @@
 name: First Pipeline
-
 on: 
   push:
     branches: [main]
@@ -8,8 +7,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: Hello World
-          run: echo "Hello CI/CD"
+      - name: Hello World
+        run: echo "Hello CI/CD"
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn compile
+      
+      - name: Run
+        run: mvn exec:java -Dexec.mainClass="App"
+    
 
 
 
