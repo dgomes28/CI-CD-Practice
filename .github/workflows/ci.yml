@@ -33,7 +33,6 @@ jobs:
           ${{secrets.FAKE_TOKEN}}
         run: |
           echo "Deploying with secret..."
-          echo "${{secrets.FAKE_TOKEN}}"
 
 
 
