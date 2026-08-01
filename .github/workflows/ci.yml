@@ -2,6 +2,8 @@ name: First Pipeline
 on: 
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build-and-test:
@@ -25,7 +27,7 @@ jobs:
         run: mvn clean test
 
   deploy:
-    if: github.ref == 'refs/head/main'
+    if: github.ref == 'refs/heads/main'
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
