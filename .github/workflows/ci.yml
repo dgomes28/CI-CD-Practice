@@ -28,8 +28,12 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - name: deploy
-        run: echo "Deploying..."
+      - name: deploy with secret
+        env:
+          ${{secrets.FAKE_TOKEN}}
+        run: |
+          echo "Deploying with secret..."
+          echo "${{secrets.FAKE_TOKEN}}"
 
 
 
