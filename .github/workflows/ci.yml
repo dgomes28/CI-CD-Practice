@@ -18,16 +18,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'    
       - name: Build 
-        run: |
-             pwd
-             ls ..
-             ls ../..
-             ls ../../..
-             javac -d out src/main/java/App.java
+        run: mvn compile
       
       - name: Run
-        run: java -cp out App
-    
+        run: mvn exec:java -Dexec.mainClass="App"
 
 
 
