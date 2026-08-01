@@ -4,7 +4,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Hello World
@@ -21,19 +21,19 @@ jobs:
           distribution: 'temurin'    
       - name: Build 
         run: mvn compile
-      
-#      - name: Run
-#        run: mvn exec:java -Dexec.mainClass="Calculator"
-
-  run-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          node-version: '24'
       - name: Run tests
         run: mvn clean test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: echo "Deploying..."
+
+
+
+
 
 
 
