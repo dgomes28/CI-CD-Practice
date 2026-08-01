@@ -30,8 +30,8 @@ jobs:
     steps:
       - name: deploy with secret
         env:
-          ${{secrets.FAKE_TOKEN}}
-        run: |
+          DEPLOY_TOKEN: ${{secrets.FAKE_TOKEN}}
+        run:
           echo "Deploying with secret..."
 
 
