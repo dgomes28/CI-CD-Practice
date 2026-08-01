@@ -25,6 +25,7 @@ jobs:
         run: mvn clean test
 
   deploy:
+    if: github.ref == "refs/head/main"
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
