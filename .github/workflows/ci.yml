@@ -35,15 +35,17 @@ jobs:
         
 
   deploy:
-    if: github.ref == 'refs/heads/main'
     needs: build-and-test
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
-      - name: Deployment info
-        env:
-          DEPLOY_TOKEN: ${{secrets.FAKE_TOKEN}}
-        run: |
-          echo "The server was deployed, health check passed and is working. It was closed afterwards"
+      - uses: actions/checkout@v4
+      #- name: Deployment via Ansible
+      #  env:
+      #    DEPLOY_TOKEN: ${{secrets.FAKE_TOKEN}}
+      #  run: ansible-playbook -i inventori.ini deploy-playbook.yml
+      - name: Deploy placeholder
+        run: echo "Would run Ansible playbook against real cluster here"
 
 
 

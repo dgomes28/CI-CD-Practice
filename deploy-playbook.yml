@@ -1,0 +1,16 @@
+- name: Deploy Java app to Kubernetes
+  hosts: local
+  tasks:
+    - name: Apply deployment
+      command: kubectl apply -f k8s/deployment.yaml
+
+    - name: Apply service
+      command: kubectl apply -f k8s/service.yaml
+
+    - name: Wait for pods to be ready
+      command: kubectl rollout status deployment/javaapp-deployment
+      register: rollout_result
+
+    - name: Show rollout result
+      debug:
+        msg: "{{ rollout_result.stdout }}"
