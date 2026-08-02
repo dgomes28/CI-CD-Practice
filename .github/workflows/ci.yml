@@ -26,7 +26,12 @@ jobs:
       - name: Docker build
         run: docker build -t app .
       - name: Docker run
-        run: docker run app
+        run: |
+          docker run -d --name app -p 8080:8080 app
+          sleep 5
+          curl --fail http://localhost:8080/health
+          docker stop app
+          docker rm app
         
 
   deploy:
@@ -34,12 +39,11 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - name: deploy with secret
+      - name: Deployment info
         env:
           DEPLOY_TOKEN: ${{secrets.FAKE_TOKEN}}
         run: |
-          echo "Deploying with secret..."
-          echo "${{secrets.FAKE_TOKEN}}"
+          echo "The server was deployed, health check passed and is working. It was closed afterwards"
 
 
 
