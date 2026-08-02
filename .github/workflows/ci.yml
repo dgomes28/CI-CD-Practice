@@ -13,8 +13,6 @@ jobs:
         run: echo "Hello CI/CD"
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          node-version: 24
 
       - name: Set up Java
         uses: actions/setup-java@v5 
@@ -25,6 +23,11 @@ jobs:
         run: mvn compile
       - name: Run tests
         run: mvn clean test
+      - name: Docker build
+        run: docker build -t app .
+      - name: Docker run
+        run: docker run app
+        
 
   deploy:
     if: github.ref == 'refs/heads/main'
