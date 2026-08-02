@@ -16,7 +16,7 @@ public class App {
             OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());
             os.close();
-            SYstem.out.println("TEST");
+            System.out.println("TEST");
         });
 
         server.createContext("/health", exchange -> {
